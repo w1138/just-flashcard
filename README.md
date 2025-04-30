@@ -6,6 +6,8 @@ Abstract
 ---
 Soon
 
+Online version : https://justflashcard.com
+
 Project name : Just Flashcards
 
 GitHub name : simple-flashcard
