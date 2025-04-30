@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Just Flashcard</title>
+    <meta name="description" content="Simple and free online Flashcard">
+    <meta name="keywords" content="flashcard, flashcards, language, learning, free, online, card">
+    <meta name="author" content="William Ducret">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+
+    </style>
+
+  </head>
+
+<body>
+
+
+
+<!------------------------------------------------------------------------>
+<!-- Navbar -->
+<!------------------------------------------------------------------------>
+<div class="w3-top">
+  <div class="w3-bar w3-top w3-left-align w3-large">
+    <a id="menu_button" class="w3-bar-item w3-button w3-right large w3-large w3-hide-large" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <span id="website_title" class="w3-bar-item" style="color:white;">Just FlashCard</span>
+  </div>
+</div>
+
+
+
+<!------------------------------------------------------------------------>
+<!-- Sidebar -->
+<!------------------------------------------------------------------------>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-animate-left" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+
+  <!-- <h4 class="w3-bar-item"><b>Menu</b></h4> -->
+  <div style="margin-top:100px;"></div>
+
+  <div class="w3-bar-item" id="language-selector">
+    <label for="language">Langue :</label>
+    <select id="language">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="ja">日本語</option>
+      <option value="zh">中文</option>
+    </select>
+  </div>
+
+
+  <!-- Toggle Switch pour le mode focus -->
+  <div class="w3-bar-item toggle-switch">
+    <p id="label_switch">Mode concentration</p>
+    <label for="focus-mode-toggle" id="focus-mode-label" class="switch">
+    <input type="checkbox" id="focus-mode-toggle">
+    <span class="slider round"></span>
+    </label>
+  </div>
+
+
+  <div class="w3-bar-item button_side">
+    <button id="btn_list">Voir la liste des cartes</button>
+  </div>
+  <div class="w3-bar-item button_side">
+    <button id="btn_edit">Passer en mode édition</button>
+  </div>
+  <div class="w3-bar-item button_side">
+    <button id="btn_export">Exporter les cartes</button>
+  </div>
+  <div class="w3-bar-item button_side">
+    <button id="btn_import">Importer des cartes</button>
+    <input type="file" id="import-file" accept=".json" style="display: none;">
+  </div>
+
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+<!------------------------------------------------------------------------>
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<!------------------------------------------------------------------------>
+<div class="w3-main" style="margin-left:250px">
+
+
+  <div class="flashcard-area">
+
+  <div id="flashcard-container">
+
+
+    <!-- Affichage du score -->
+    <div id="score-container">
+        <span>Score :</span>
+        <span id="score">0</span>
+    </div>
+
+
+    <!-- Mode révision -->
+    <div id="flashcard">
+        <div id="question" class="face w3-xlarge">Question</div>
+        <div id="answer" class="face back w3-xlarge">Réponse</div>
+    </div>
+
+
+    <button id="next-card">Carte suivante</button>
+
+    <!-- Boutons de résultat (masqués par défaut) -->
+    <div id="result-buttons" class="hidden">
+        <button id="correct-button">Correct</button>
+        <button id="wrong-button">Faux</button>
+    </div>
+
+
+    <!-- Mode édition -->
+    <div id="edit-mode" class="hidden">
+      <h2>Mode Édition</h2>
+      <form id="edit-form">
+          <label for="new-question">Question :</label>
+          <input type="text" id="new-question" required>
+          <label for="new-answer">Réponse :</label>
+          <input type="text" id="new-answer" required>
+          <button type="submit">Ajouter la carte</button>
+      </form>
+      <p id="confirmation-message" class="hidden">Carte ajoutée avec succès !</p>
+    </div>
+
+
+    <!-- Mode liste des cartes -->
+    <div id="list-mode" class="hidden">
+        <h2>Liste des cartes</h2>
+        <ul id="card-list"></ul>
+    </div>
+
+
+  </div>
+
+  </div>
+
+
+
+  <!------------------------------------------------------------------------>
+  <!-- Footer -->
+  <!------------------------------------------------------------------------>
+
+
+  <footer id="myFooter">
+    <div class="w3-container w3-padding-32">
+      <h4>Free for everyone 😊</h4>
+      <p>Just FlashCard - <a href="version.html">v1.0</a></p>
+    </div>
+  </footer>
+
+
+<!-- END MAIN -->
+</div>
+
+
+<script src="translations.js"></script>
+<script src="script.js"></script>
+
+
+<!------------------------------------------------------------------------>
+<!-- Script -->
+<!------------------------------------------------------------------------>
+
+<script>
+
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+
+
+</script>
+
+</body>
+</html>
+
+
