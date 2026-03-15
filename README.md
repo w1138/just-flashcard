@@ -1,16 +1,13 @@
-# simple-flashcard
-A simple flashcards interface to practice and rehears your vocabulary
+# just-flashcard
+A simple flashcard interface to practice and rehearse your vocabulary
 
 
 Abstract
 ---
-Soon
+Simple interface that displays a flashcard and allows it to be flipped when clicked. The interface is minimalist in order to focus on the essentials.
 
-Online version : https://justflashcard.com
+Online version : https://www.justflashcard.com
 
-Project name : Just Flashcards
-
-GitHub name : simple-flashcard
 
 | Item | Status |
 | ----------- | ----------- |
@@ -21,14 +18,12 @@ GitHub name : simple-flashcard
 
 Features
 ---
-- Soon
+- Language selection
+- See existing flashcards
+- Edit flashcards
+- Export / Import a list of flashcards (.json)
+- Button right / wrong
+- Points counter
+- Next card button
+- Focus mode (remove everything except cards)
 
-
-Dependencies
----
-- Soon
-
-
-Files user manuel
----
-- Soon
